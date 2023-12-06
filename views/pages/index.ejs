@@ -1,40 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <% 
-        const teams = {
-            "Hawks": "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
-            "Celtics": "https://upload.wikimedia.org/wikipedia/fr/thumb/6/65/Celtics_de_Boston_logo.svg/1024px-Celtics_de_Boston_logo.svg.png",
-            "Nets": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Brooklyn_Nets_newlogo.svg/130px-Brooklyn_Nets_newlogo.svg.png",
-            "Hornets": "https://upload.wikimedia.org/wikipedia/fr/thumb/f/f3/Hornets_de_Charlotte_logo.svg/1200px-Hornets_de_Charlotte_logo.svg.png",
-            "Bulls": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/d1/Bulls_de_Chicago_logo.svg/1200px-Bulls_de_Chicago_logo.svg.png",
-            "Cavaliers": "https://upload.wikimedia.org/wikipedia/fr/thumb/0/06/Cavs_de_Cleveland_logo_2017.png/150px-Cavs_de_Cleveland_logo_2017.png",
-            "Mavericks": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b8/Mavericks_de_Dallas_logo.svg/150px-Mavericks_de_Dallas_logo.svg.png",
-            "Nuggets": "https://upload.wikimedia.org/wikipedia/fr/thumb/3/35/Nuggets_de_Denver_2018.png/180px-Nuggets_de_Denver_2018.png",
-            "Pistons": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Logo_of_the_Detroit_Pistons.png/300px-Logo_of_the_Detroit_Pistons.png",
-            "Warriors": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/de/Warriors_de_Golden_State_logo.svg/1200px-Warriors_de_Golden_State_logo.svg.png",
-            "Rockets": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/de/Houston_Rockets_logo_2003.png/330px-Houston_Rockets_logo_2003.png",
-            "Pacers": "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cf/Pacers_de_l%27Indiana_logo.svg/1180px-Pacers_de_l%27Indiana_logo.svg.png",
-            "Clippers": "https://upload.wikimedia.org/wikipedia/fr/d/d6/Los_Angeles_Clippers_logo_2010.png",
-            "Lakers": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/220px-Los_Angeles_Lakers_logo.svg.png",
-            "Grizzlies": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/1200px-Memphis_Grizzlies.svg.png",
-            "Heat": "https://upload.wikimedia.org/wikipedia/fr/thumb/1/1c/Miami_Heat_-_Logo.svg/1200px-Miami_Heat_-_Logo.svg.png",
-            "Bucks": "https://upload.wikimedia.org/wikipedia/fr/3/34/Bucks2015.png",
-            "Timberwolves": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/d9/Timberwolves_du_Minnesota_logo_2017.png/200px-Timberwolves_du_Minnesota_logo_2017.png",
-            "Pelicans": "https://upload.wikimedia.org/wikipedia/fr/thumb/2/21/New_Orleans_Pelicans.png/200px-New_Orleans_Pelicans.png",
-            "Knicks": "https://upload.wikimedia.org/wikipedia/fr/3/34/Knicks_de_NY.png",
-            "Thunder": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Thunder_d%27Oklahoma_City_logo.svg/1200px-Thunder_d%27Oklahoma_City_logo.svg.png",
-            "Magic": "https://upload.wikimedia.org/wikipedia/fr/b/bd/Orlando_Magic_logo_2010.png",
-            "76ers": "https://upload.wikimedia.org/wikipedia/fr/4/48/76ers_2016.png",
-            "Suns": "https://upload.wikimedia.org/wikipedia/fr/5/56/Phoenix_Suns_2013.png",
-            "Trail Blazers": "https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Portland_Trail_Blazers_logo.svg/1200px-Portland_Trail_Blazers_logo.svg.png",
-            "Kings": "https://upload.wikimedia.org/wikipedia/fr/thumb/9/95/Kings_de_Sacramento_logo.svg/1200px-Kings_de_Sacramento_logo.svg.png",
-            "Spurs": "https://upload.wikimedia.org/wikipedia/fr/0/0e/San_Antonio_Spurs_2018.png",
-            "Jazz": "https://upload.wikimedia.org/wikipedia/fr/3/3b/Jazz_de_l%27Utah_logo.png",
-            "Wizards": "https://upload.wikimedia.org/wikipedia/fr/archive/d/d6/20161212034849%21Wizards2015.png",
-            "Raptors": "https://upload.wikimedia.org/wikipedia/fr/8/89/Raptors2015.png"
-        }
-        %>
         <link rel="apple-touch-icon" sizes="180x180" href="favicon_package_v0.16/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="favicon_package_v0.16/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="favicon_package_v0.16/favicon-16x16.png">
@@ -59,13 +25,13 @@
                     <a class="nav-link active" href="/">Home</a>
                   </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="games.html">Games</a>
+                  <a class="nav-link" href="games">Games</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="teams.html">Teams</a>
+                  <a class="nav-link" href="teams">Teams</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="players.html">Players</a>
+                  <a class="nav-link" href="players">Players</a>
                 </li>
               </ul>
             </div>
@@ -78,6 +44,9 @@
           <hr class="hr hr-blurry" />
           <div>
             <h1 class="text-center">Games Today</h1>
+            <% if(games.data.length <= 0) { %>
+                    <p class="text-center">There are no games today. Check back tomorrow!</p>
+            <%} else {%>
             <table class="table table-dark table-striped table-hover">
                 <thead>
                     <tr class="text-center">
@@ -119,5 +88,6 @@
             </table>
         </div>
         <footer class="text-center">NOTE: Score and quarter for games that are live, are ~10 min behind due to data source!</footer>
+        <%}%>
     </body>
 </html>
