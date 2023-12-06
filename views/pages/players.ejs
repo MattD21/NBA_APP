@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%  
+        const teams = {
+            "Atlanta Hawks": "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
+            "Boston Celtics": "https://upload.wikimedia.org/wikipedia/fr/thumb/6/65/Celtics_de_Boston_logo.svg/1024px-Celtics_de_Boston_logo.svg.png",
+            "Brooklyn Nets": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Brooklyn_Nets_newlogo.svg/130px-Brooklyn_Nets_newlogo.svg.png",
+            "Charlotte Hornets": "https://upload.wikimedia.org/wikipedia/fr/thumb/f/f3/Hornets_de_Charlotte_logo.svg/1200px-Hornets_de_Charlotte_logo.svg.png",
+            "Chicago Bulls": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/d1/Bulls_de_Chicago_logo.svg/1200px-Bulls_de_Chicago_logo.svg.png",
+            "Cleveland Cavaliers": "https://upload.wikimedia.org/wikipedia/fr/thumb/0/06/Cavs_de_Cleveland_logo_2017.png/150px-Cavs_de_Cleveland_logo_2017.png",
+            "Dallas Mavericks": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b8/Mavericks_de_Dallas_logo.svg/150px-Mavericks_de_Dallas_logo.svg.png",
+            "Denver Nuggets": "https://upload.wikimedia.org/wikipedia/fr/thumb/3/35/Nuggets_de_Denver_2018.png/180px-Nuggets_de_Denver_2018.png",
+            "Detroit Pistons": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Logo_of_the_Detroit_Pistons.png/300px-Logo_of_the_Detroit_Pistons.png",
+            "Golden State Warriors": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/de/Warriors_de_Golden_State_logo.svg/1200px-Warriors_de_Golden_State_logo.svg.png",
+            "Houston Rockets": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/de/Houston_Rockets_logo_2003.png/330px-Houston_Rockets_logo_2003.png",
+            "Indiana Pacers": "https://upload.wikimedia.org/wikipedia/fr/thumb/c/cf/Pacers_de_l%27Indiana_logo.svg/1180px-Pacers_de_l%27Indiana_logo.svg.png",
+            "LA Clippers": "https://upload.wikimedia.org/wikipedia/fr/d/d6/Los_Angeles_Clippers_logo_2010.png",
+            "Los Angeles Lakers": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/220px-Los_Angeles_Lakers_logo.svg.png",
+            "Grizzlies": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/1200px-Memphis_Grizzlies.svg.png",
+            "Miami Heat": "https://upload.wikimedia.org/wikipedia/fr/thumb/1/1c/Miami_Heat_-_Logo.svg/1200px-Miami_Heat_-_Logo.svg.png",
+            "Bucks": "https://upload.wikimedia.org/wikipedia/fr/3/34/Bucks2015.png",
+            "Minnesotta Timberwolves": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/d9/Timberwolves_du_Minnesota_logo_2017.png/200px-Timberwolves_du_Minnesota_logo_2017.png",
+            "New Orleans Pelicans": "https://upload.wikimedia.org/wikipedia/fr/thumb/2/21/New_Orleans_Pelicans.png/200px-New_Orleans_Pelicans.png",
+            "New York Knicks": "https://upload.wikimedia.org/wikipedia/fr/3/34/Knicks_de_NY.png",
+            "Oklahoma City Thunder": "https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Thunder_d%27Oklahoma_City_logo.svg/1200px-Thunder_d%27Oklahoma_City_logo.svg.png",
+            "Orlando Magic": "https://upload.wikimedia.org/wikipedia/fr/b/bd/Orlando_Magic_logo_2010.png",
+            "Philadelphia 76ers": "https://upload.wikimedia.org/wikipedia/fr/4/48/76ers_2016.png",
+            "Phenoix Suns": "https://upload.wikimedia.org/wikipedia/fr/5/56/Phoenix_Suns_2013.png",
+            "Trail Blazers": "https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Portland_Trail_Blazers_logo.svg/1200px-Portland_Trail_Blazers_logo.svg.png",
+            "Sacramento Kings": "https://upload.wikimedia.org/wikipedia/fr/thumb/9/95/Kings_de_Sacramento_logo.svg/1200px-Kings_de_Sacramento_logo.svg.png",
+            "San Antonio Spurs": "https://upload.wikimedia.org/wikipedia/fr/0/0e/San_Antonio_Spurs_2018.png",
+            "Utah Jazz": "https://upload.wikimedia.org/wikipedia/fr/3/3b/Jazz_de_l%27Utah_logo.png",
+            "Washington Wizards": "https://upload.wikimedia.org/wikipedia/fr/archive/d/d6/20161212034849%21Wizards2015.png",
+            "Toronto Raptors": "https://upload.wikimedia.org/wikipedia/fr/8/89/Raptors2015.png"
+        }
+        %>
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_package_v0.16/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_package_v0.16/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_package_v0.16/favicon-16x16.png">
+        <link rel="manifest" href="favicon_package_v0.16/site.webmanifest">
+        <link rel="mask-icon" href="favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <title>NBA</title>
+        <link href="./css/styles.css" rel="stylesheet" type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body data-bs-theme='dark'>
+        <div class="text-center">
+            <h1 class="display-1">NBA Stats Website</h1>
+        </div>
+        <nav class="navbar navbar-expand-sm" data-bs-theme='dark'>
+            <div class="container-fluid justify-content-center">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="games.html">Games</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="teams.html">Teams</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="players.html">Players</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <hr class="hr hr-blurry" />
+          <div class="container text-center">
+            <p>Welcome to my NBA stats website, created by Matthew Darragh!<br> Here you can find everything from
+               live games and stats, to games from over a decade ago!</p>
+          </div>
+          <hr class="hr hr-blurry" />
+          <div>
+            <h1 class="text-center">Player Stats</h1>
+            <table id="myTable" class="table table-striped table-hover border" width="100%">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Team</th>
+                        <th scope="col">Player</th>
+                        <th scope="col">Points</th>
+                        <th scope="col">Assists</th>
+                        <th scope="col">Rebounds</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% console.log(players);
+                    for(let i = 0; i < players.length; i++) {%>
+                        <tr class="text-center">
+                        <td><img width=50 height=50 src=<%= teams[players[i].team_name] %>>&nbsp&nbsp&nbsp&nbsp<%= players[i].team_name%></td>
+                        <td><%= players[i].player_name%></td>
+                        <td>30</td>
+                        <td>10</td>
+                        <td>5</td>
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    </body>
+</html>
+
+<script>
+let table = new DataTable('#myTable');
+</script>
