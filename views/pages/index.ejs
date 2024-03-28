@@ -13,10 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body data-bs-theme='dark'>
         <div class="text-center">
-            <h1 class="display-1">NBA Stats Website</h1>
+            <h1 class="display-1 custom-heading">NBA Stats Website</h1>
         </div>
         <nav class="navbar navbar-expand-sm" data-bs-theme='dark'>
             <div class="container-fluid justify-content-center">
@@ -56,10 +57,10 @@
                 </thead>
                 <tbody>
                     <% for(let i = 0; i < games.data.length; i++) {
-                        var home_team = games.data[i].home_team.name;
-                        var visitor_team = games.data[i].visitor_team.name;
+                        var home_team = games.data[i].home_team.full_name;
+                        var visitor_team = games.data[i].visitor_team.full_name;
                         var time = games.data[i].status;
-                        console.log(time);
+                        
                         if(time != "Final" && time != "1st Qtr" && time != "2nd Qtr" && time != "3rd Qtr" && time != "4th Qtr") {
                             time = time.split("T");
                             let hour = time[1].split(":");

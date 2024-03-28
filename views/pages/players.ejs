@@ -14,10 +14,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body data-bs-theme='dark'>
         <div class="text-center">
-            <h1 class="display-1">NBA Stats Website</h1>
+            <h1 class="display-1 custom-heading">NBA Stats Website</h1>
         </div>
         <nav class="navbar navbar-expand-sm" data-bs-theme='dark'>
             <div class="container-fluid justify-content-center">
@@ -48,9 +49,10 @@
             <table id="myTable" class="table table-striped table-hover border" width="100%">
                 <thead>
                     <tr class="text-center">
+                        <th scope="col">Rank</th>
                         <th scope="col">Team</th>
                         <th scope="col">Player</th>
-                        <th scope="col">Points</th>
+                        <th sort="true" scope="col">Points</th>
                         <th scope="col">Assists</th>
                         <th scope="col">Rebounds</th>
                     </tr>
@@ -59,6 +61,7 @@
                     <%
                     for(let i = 0; i < players.length; i++) {%>
                         <tr class="text-center">
+                          <td><%= i+1%></td>
                         <td><img width=50 height=50 src=<%= teams[players[i].team_name] %>>&nbsp&nbsp&nbsp&nbsp<%= players[i].team_name%></td>
                         <td><%= players[i].player_name%></td>
                         <td><%= players[i].points%></td>
@@ -75,7 +78,37 @@
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     </body>
 </html>
-
 <script>
-let table = new DataTable('#myTable');
+  $(document).ready(function() {
+      let table = $('#myTable').DataTable({
+            columnDefs: [
+                { targets: 0, orderable: false } // Disable sorting for the first column (Rank)
+            ],
+            order: [[3, 'desc']] // Initial sorting by the rank column in ascending order
+        });
+
+      // Add event listener for sorting
+      table.on('order.dt', function () {
+          table.column(0, {search: 'applied'}).nodes().each(function (cell, i) {
+              if (table.order()[0][0] === 2 || table.order()[0][0] === 1) { // If sorting by player name column
+                  if (table.order()[0][1] === 'desc') {
+                      cell.innerHTML = table.page.info().recordsDisplay - i;
+                  } else {
+                      cell.innerHTML = i + 1;
+                  }
+              } else { // For other columns, keep the default ranking behavior
+                  if (table.order()[0][1] === 'desc') {
+                      cell.innerHTML = i + 1;
+                  } else {
+                      cell.innerHTML = table.page.info().recordsDisplay - i;
+                  }
+              }
+          });
+      });
+
+      // Initial ranking
+      table.column(0, {search: 'applied'}).nodes().each(function (cell, i) {
+          cell.innerHTML = i + 1;
+      });
+  });
 </script>
